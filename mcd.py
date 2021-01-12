@@ -31,9 +31,10 @@ def skrank():
     elif user_input == "t" or user_input == "T":
         pass
 
+#Her skriver jeg noget sejt lolololol
+
 #Kør programmet
 user_input = ""
 while True:
     start()
-
-#lololololol
+    
