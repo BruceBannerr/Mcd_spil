@@ -35,3 +35,5 @@ def skrank():
 user_input = ""
 while True:
     start()
+
+#lololololol
