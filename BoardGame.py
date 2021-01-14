@@ -1,6 +1,4 @@
-"""
-McD-Game
-"""
+""" McD-Game """
 
 import arcade
 
@@ -17,7 +15,6 @@ class Player(arcade.Sprite):
     def update(self):
         """ Move the player """
         # Move player.
-        # Remove these lines if physics engine is moving player.
         self.center_x += self.change_x
         self.center_y += self.change_y
 
@@ -33,14 +30,10 @@ class Player(arcade.Sprite):
             self.top = SCREEN_HEIGHT - 1
 
 class MyGame(arcade.Window):
-    """
-    Main application class.
-    """
+    """ Main application class """
 
     def __init__(self, width, height, title):
-        """
-        Initializer
-        """
+        """ Initializer """
 
         # Call the parent class initializer
         super().__init__(width, height, title)
@@ -61,14 +54,10 @@ class MyGame(arcade.Window):
         arcade.set_background_color(arcade.color.AMAZON)
 
     def setup(self):
-        """ Set up the game and initialize the variables. """
+        """ Set up the game and initialize the variables """
 
         # Sprite lists
         self.player_list = arcade.SpriteList()
-        self.coin_list = arcade.SpriteList()
-
-        # Score
-        self.score = 0
 
         # Set up the player
         self.player_sprite = Player(":resources:images/animated_characters/female_person/femalePerson_idle.png", SPRITE_SCALING)
@@ -76,26 +65,8 @@ class MyGame(arcade.Window):
         self.player_sprite.center_y = 50
         self.player_list.append(self.player_sprite)
 
-
-        # Create the coins
-    for i in range(COIN_COUNT):
-
-        # Create the coin instance
-        # Coin image from kenney.nl
-        coin = arcade.Sprite(":resources:images/coin_01.png", SPRITE_SCALING_COIN)
-
-        # Position the coin
-        coin.center_x = random.randrange(SCREEN_WIDTH)
-        coin.center_y = random.randrange(SCREEN_HEIGHT)
-
-        # Add the coin to the lists
-        self.coin_list.append(coin)
-
-
     def on_draw(self):
-        """
-        Render the screen.
-        """
+        """ Render the screen """
 
         # This command has to happen before we start drawing
         arcade.start_render()
@@ -123,7 +94,7 @@ class MyGame(arcade.Window):
         self.player_list.update()
 
     def on_key_press(self, key, modifiers):
-        """Called whenever a key is pressed. """
+        """ Called whenever a key is pressed """
 
         if key == arcade.key.UP:
             self.up_pressed = True
@@ -135,7 +106,7 @@ class MyGame(arcade.Window):
             self.right_pressed = True
 
     def on_key_release(self, key, modifiers):
-        """Called when the user releases a key. """
+        """ Called when the user releases a key """
 
         if key == arcade.key.UP:
             self.up_pressed = False
