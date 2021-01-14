@@ -1,13 +1,13 @@
 """
-Platformer Game
+McD-Game
 """
 
 import arcade
 
-#constants
-SCREEN_WIDTH = 600
+# Constants
+SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 600
-SCREEN_TITLE = "Platformer"
+SCREEN_TITLE = "McD-game"
 
 # Constants used to scale our sprites from their original size
 CHARACTER_SCALING = 1
