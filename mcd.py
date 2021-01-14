@@ -1,6 +1,11 @@
+import random
+
+#Moneycounter
+moneycount=0
+
 #Starten af spillet
 def start():
-    print("Du er på mcd, men har ingen penge. Vil du gå til udgangen, tast u. Vil du gå til skranken, tast s.")
+    print("Du er på mcd. Du har",moneycount,"kroner")
     user_input = input(":")
     
     #Gå til udgang
@@ -9,6 +14,9 @@ def start():
     #Gå til skrank
     if user_input == "s" or user_input == "S":
         skrank()
+    #Gå til kø
+    if user_input == "k" or user_input == "K":
+        kø()
     #Forkert tast
     else:
         print("Prøv lige igen")
@@ -24,12 +32,16 @@ def udgang():
 
 #Skranken 
 def skrank():
-    print("Du står ved skranken. Du har et eller andet antal penge. Vil du købe en burger, tast k, vil du gå tilbage, tast t.")
-    user_input = input(":")
-    if user_input == "k" or user_input == "K":
-        print("Du kan ikke købe, for du har ingen penge.")
-    elif user_input == "t" or user_input == "T":
-        pass
+    print("Du står ved skranken. Du har ", moneycount, "kroner.")
+    if moneycount >= 65:
+        print("Du har penge nok til en burger. Vil du købe? tast y for ja, tast n for nej.")
+        user_input = input(":")
+        if user_input == "y" or user_input == "Y":
+            print("Jaa, du har købt en burger.") 
+        elif user_input == "n" or user_input == "N":
+            print("Du har ikke købt en burger")
+    elif moneycount < 65:
+        print("Du har ikke penge til en burger")
 
 #Kø
 def kø():
