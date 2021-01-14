@@ -114,7 +114,7 @@ class MyGame(arcade.Window):
         self.physics_engine = arcade.PhysicsEnginePlatformer(self.player_sprite,
                                                              self.wall_list,
                                                              GRAVITY)
-                                                             def on_draw(self):
+    def on_draw(self):
         """ Render the screen. """
 
         # Clear the screen to the background color
