@@ -1,5 +1,8 @@
 import arcade
 
+#startskærm
+SCREEN_WIDTH=600
+SCREEN_HEIGHT=600
 def on_key_release(self, key, modifiers):
         """Called when the user releases a key. """
 
