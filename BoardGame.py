@@ -32,7 +32,6 @@ class Player(arcade.Sprite):
         elif self.top > SCREEN_HEIGHT - 1:
             self.top = SCREEN_HEIGHT - 1
 
-
 class MyGame(arcade.Window):
     """
     Main application class.
@@ -101,8 +100,6 @@ class MyGame(arcade.Window):
             self.player_sprite.change_x = MOVEMENT_SPEED
 
         # Call update to move the sprite
-        # If using a physics engine, call update player to rely on physics engine
-        # for movement, and call physics engine here.
         self.player_list.update()
 
     def on_key_press(self, key, modifiers):
