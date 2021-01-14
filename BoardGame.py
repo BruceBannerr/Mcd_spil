@@ -14,3 +14,9 @@ def on_key_release(self, key, modifiers):
             self.player_sprite.change_x = 0
         elif key == arcade.key.RIGHT or key == arcade.key.D:
             self.player_sprite.change_x = 0
+
+def on_update(self, delta_time):
+        """ Movement and game logic """
+
+        # Move the player with the physics engine
+        self.physics_engine.update()
