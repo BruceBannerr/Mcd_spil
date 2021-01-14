@@ -16,8 +16,6 @@ COIN_SCALING = 0.5
 
 # Movement speed of player, in pixels per frame
 PLAYER_MOVEMENT_SPEED = 5
-GRAVITY = 1
-PLAYER_JUMP_SPEED = 20
 
 # How many pixels to keep as a minimum margin between the character
 # and the edge of the screen.
@@ -44,9 +42,6 @@ class MyGame(arcade.Window):
 
         # Separate variable that holds the player sprite
         self.player_sprite = None
-
-        # Our physics engine
-        self.physics_engine = None
 
         # Used to keep track of our scrolling
         self.view_bottom = 0
@@ -99,7 +94,7 @@ class MyGame(arcade.Window):
 
         for coordinate in coordinate_list:
             # Add a crate on the ground
-            wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", TILE_SCALING)
+            wall = arcade.Sprite(":resources:images/tiles/table.png", TILE_SCALING)
             wall.position = coordinate
             self.wall_list.append(wall)
 
@@ -110,10 +105,6 @@ class MyGame(arcade.Window):
             coin.center_y = 96
             self.coin_list.append(coin)
 
-        # Create the 'physics engine'
-        self.physics_engine = arcade.PhysicsEnginePlatformer(self.player_sprite,
-                                                             self.wall_list,
-                                                             GRAVITY)
     def on_draw(self):
         """ Render the screen. """
 
@@ -126,7 +117,7 @@ class MyGame(arcade.Window):
         self.player_list.draw()
 
         # Draw our score on the screen, scrolling it with the viewport
-        score_text = f"Score: {self.score}"
+        score_text = f"Money: {self.score}"
         arcade.draw_text(score_text, 10 + self.view_left, 10 + self.view_bottom,
                          arcade.csscolor.WHITE, 18)
 
