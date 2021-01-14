@@ -71,6 +71,8 @@ class MyGame(arcade.Window):
         self.player_sprite.center_x = 30
         self.player_sprite.center_y = 30
         self.player_list.append(self.player_sprite)
+
+        #BRUH
         
     # Create the coins
     for i in range(COIN_COUNT):
