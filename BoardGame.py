@@ -76,13 +76,16 @@ class MyGame(arcade.Window):
         self.player_sprite.center_y = 50
         self.player_list.append(self.player_sprite)
 
+    SPRITE_SCALING_COIN = 0.2
+
+    coin = arcade.Sprite(":resources:images/items/coinGold.png", SPRITE_SCALING_COIN)
 
         # Create the coins
     for i in range(COIN_COUNT):
 
         # Create the coin instance
         # Coin image from kenney.nl
-        coin = arcade.Sprite(":resources:images/coin_01.png", SPRITE_SCALING_COIN)
+        coin = arcade.Sprite(":resources:images/items/coinGold.png", SPRITE_SCALING_COIN)
 
         # Position the coin
         coin.center_x = random.randrange(SCREEN_WIDTH)
