@@ -10,6 +10,8 @@ SCREEN_TITLE = "McD-Game"
 
 MOVEMENT_SPEED = 5
 
+#BRUH
+
 class Player(arcade.Sprite):
 
     def update(self):
