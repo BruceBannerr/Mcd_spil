@@ -1,6 +1,4 @@
-"""
-McD-Game
-"""
+""" McD-Game """
 
 import arcade
 
@@ -12,12 +10,15 @@ SCREEN_TITLE = "McD-Game"
 
 MOVEMENT_SPEED = 5
 
+COIN_SCALING = 0.5
+
+#BRUH
+
 class Player(arcade.Sprite):
 
     def update(self):
         """ Move the player """
         # Move player.
-        # Remove these lines if physics engine is moving player.
         self.center_x += self.change_x
         self.center_y += self.change_y
 
@@ -32,16 +33,11 @@ class Player(arcade.Sprite):
         elif self.top > SCREEN_HEIGHT - 1:
             self.top = SCREEN_HEIGHT - 1
 
-
 class MyGame(arcade.Window):
-    """
-    Main application class.
-    """
+    """ Main application class """
 
     def __init__(self, width, height, title):
-        """
-        Initializer
-        """
+        """ Initializer """
 
         # Call the parent class initializer
         super().__init__(width, height, title)
@@ -51,6 +47,9 @@ class MyGame(arcade.Window):
 
         # Set up the player info
         self.player_sprite = None
+
+        #set up coin info
+        self.coin_list = None
 
         # Track the current state of what key is pressed
         self.left_pressed = False
@@ -62,26 +61,40 @@ class MyGame(arcade.Window):
         arcade.set_background_color(arcade.color.AMAZON)
 
     def setup(self):
-        """ Set up the game and initialize the variables. """
+        """ Set up the game and initialize the variables """
 
         # Sprite lists
         self.player_list = arcade.SpriteList()
+        self.coin_list = arcade.SpriteList()
+
+        # Score
+        self.score = 0
+
 
         # Set up the player
-        self.player_sprite = Player(":resources:images/animated_characters/female_person/femalePerson_idle.png", SPRITE_SCALING)
-        self.player_sprite.center_x = 50
-        self.player_sprite.center_y = 50
+        self.player_sprite = Player(":resources:images/alien/alienBlue_front.png", SPRITE_SCALING)
+        self.player_sprite.center_x = 30
+        self.player_sprite.center_y = 30
         self.player_list.append(self.player_sprite)
 
+        #BRUH
+        
+           # Use a loop to place some coins for our character to pick up
+        for x in range(128, 1250, 256):
+            coin = arcade.Sprite(":resources:images/items/coinGold.png", COIN_SCALING)
+            coin.center_x = x
+            coin.center_y = 96
+            self.coin_list.append(coin)
+
+
     def on_draw(self):
-        """
-        Render the screen.
-        """
+        """ Render the screen """
 
         # This command has to happen before we start drawing
         arcade.start_render()
 
         # Draw all the sprites.
+        self.coin_list.draw()
         self.player_list.draw()
 
     def on_update(self, delta_time):
@@ -101,12 +114,19 @@ class MyGame(arcade.Window):
             self.player_sprite.change_x = MOVEMENT_SPEED
 
         # Call update to move the sprite
-        # If using a physics engine, call update player to rely on physics engine
-        # for movement, and call physics engine here.
         self.player_list.update()
 
+        # See if we hit any coins
+        coin_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
+                                                             self.coin_list)
+
+        # Loop through each coin we hit (if any) and remove it
+        for coin in coin_hit_list:
+            # Remove the coin
+            coin.remove_from_sprite_lists()
+
     def on_key_press(self, key, modifiers):
-        """Called whenever a key is pressed. """
+        """ Called whenever a key is pressed """
 
         if key == arcade.key.UP:
             self.up_pressed = True
@@ -118,7 +138,7 @@ class MyGame(arcade.Window):
             self.right_pressed = True
 
     def on_key_release(self, key, modifiers):
-        """Called when the user releases a key. """
+        """ Called when the user releases a key """
 
         if key == arcade.key.UP:
             self.up_pressed = False
