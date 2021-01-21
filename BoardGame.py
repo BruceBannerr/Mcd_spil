@@ -10,6 +10,8 @@ SCREEN_TITLE = "McD-Game"
 
 MOVEMENT_SPEED = 5
 
+COIN_SCALING = 0.5
+
 #BRUH
 
 class Player(arcade.Sprite):
@@ -46,6 +48,9 @@ class MyGame(arcade.Window):
         # Set up the player info
         self.player_sprite = None
 
+        #set up coin info
+        self.coin_list = None
+
         # Track the current state of what key is pressed
         self.left_pressed = False
         self.right_pressed = False
@@ -74,19 +79,13 @@ class MyGame(arcade.Window):
 
         #BRUH
         
-    # Create the coins
-    for i in range(COIN_COUNT):
+           # Use a loop to place some coins for our character to pick up
+        for x in range(128, 1250, 256):
+            coin = arcade.Sprite(":resources:images/items/coinGold.png", COIN_SCALING)
+            coin.center_x = x
+            coin.center_y = 96
+            self.coin_list.append(coin)
 
-        # Create the coin instance
-        # Coin image from kenney.nl
-        coin = arcade.Sprite(":resources:images/items/coinGold.png", SPRITE_SCALING_COIN)
-
-        # Position the coin
-        coin.center_x = random.randrange(SCREEN_WIDTH)
-        coin.center_y = random.randrange(SCREEN_HEIGHT)
-
-        # Add the coin to the lists
-        self.coin_list.append(coin)
 
     def on_draw(self):
         """ Render the screen """
@@ -95,6 +94,7 @@ class MyGame(arcade.Window):
         arcade.start_render()
 
         # Draw all the sprites.
+        self.coin_list.draw()
         self.player_list.draw()
 
     def on_update(self, delta_time):
