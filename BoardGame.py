@@ -57,6 +57,9 @@ class MyGame(arcade.Window):
         # Set up worker info
         self.worker_list= None
 
+        # Keep track of the score
+        self.score = 0
+
         # Track the current state of what key is pressed
         self.left_pressed = False
         self.right_pressed = False
@@ -64,7 +67,9 @@ class MyGame(arcade.Window):
         self.down_pressed = False
 
         # Set the background color
-        arcade.set_background_color(arcade.color.AMAZON)
+        #arcade.set_background_color(arcade.color.AMAZON)
+        arcade.set_background_color(arcade.csscolor.DARK_KHAKI)
+
 
     def setup(self):
         """ Set up the game and initialize the variables """
@@ -85,8 +90,8 @@ class MyGame(arcade.Window):
         self.player_list.append(self.player_sprite)
 
     
-        #BRUH
-        
+        #Environment setup
+
            # Use a loop to place some coins for our character to pick up
         for x in range(128, 1250, 256):
             coin = arcade.Sprite(":resources:images/items/coinGold.png", COIN_SCALING)
@@ -112,6 +117,10 @@ class MyGame(arcade.Window):
         self.coin_list.draw()
         self.player_list.draw()
         self.worker_list.draw()
+
+        # Draw our score on the screen
+        score_text = f"Monetos: {self.score}"
+        arcade.draw_text(score_text, 10, 10, arcade.csscolor.WHITE, 18)
 
     def on_update(self, delta_time):
         """ Movement and game logic """
