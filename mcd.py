@@ -9,13 +9,13 @@ def start():
     user_input = input(":")
     #Go to exit
     if user_input == "u" or user_input == "U":
-        udgang()
-    #Gå til desk
+        Exit()
+    #Go to desk
     if user_input == "s" or user_input == "S":
-        skrank()
+        desk()
     #Go to queue
     if user_input == "k" or user_input == "K":
-        kø()
+        queue()
     #Wrong key
     else:
         print("Try again")
