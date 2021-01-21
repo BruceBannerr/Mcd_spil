@@ -10,6 +10,8 @@ SCREEN_TITLE = "McD-Game"
 
 MOVEMENT_SPEED = 5
 
+TILE_SCALING = 0.5
+
 COIN_SCALING = 0.5
 
 PLAYER_SCALING = 0.3
@@ -39,11 +41,11 @@ class Player(arcade.Sprite):
 class MyGame(arcade.Window):
     """ Main application class """
 
-    def __init__(self, width, height, title):
+    def __init__(self):
         """ Initializer """
 
         # Call the parent class initializer
-        super().__init__(width, height, title)
+        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
 
         # Variables that will hold sprite lists
         self.player_list = None
@@ -68,7 +70,7 @@ class MyGame(arcade.Window):
 
         # Set the background color
         #arcade.set_background_color(arcade.color.AMAZON)
-        arcade.set_background_color(arcade.csscolor.DARK_KHAKI)
+        #arcade.set_background_color(arcade.csscolor.DARK_KHAKI)
 
 
     def setup(self):
@@ -88,6 +90,28 @@ class MyGame(arcade.Window):
         self.player_sprite.center_x = 30
         self.player_sprite.center_y = 30
         self.player_list.append(self.player_sprite)
+
+
+        # --- Load in a map from the tiled editor ---
+
+        # Name of map file to load
+        map_name = "map.tmx"
+        # Name of the layer in the file that has our platforms/walls
+        platforms_layer_name = 'Platforms'
+        # Name of the layer that has items for pick-up
+        #coins_layer_name = 'Coins'
+
+        # Read in the tiled map
+        my_map = arcade.tilemap.read_tmx(map_name)
+
+        # -- Platforms
+        self.board_list = arcade.tilemap.process_layer(map_object=my_map,
+                                                      layer_name=platforms_layer_name,
+                                                      scaling=TILE_SCALING,
+                                                      use_spatial_hash=True)
+
+        # -- Coins
+        #self.coin_list = arcade.tilemap.process_layer(my_map, coins_layer_name, TILE_SCALING)
 
     
         #Environment setup
@@ -117,6 +141,7 @@ class MyGame(arcade.Window):
         self.coin_list.draw()
         self.player_list.draw()
         self.worker_list.draw()
+        self.board_list.draw()
 
         # Draw our score on the screen
         score_text = f"Monetos: {self.score}"
@@ -186,7 +211,7 @@ class MyGame(arcade.Window):
 
 def main():
     """ Main method """
-    window = MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+    window = MyGame()
     window.setup()
     arcade.run()
 
