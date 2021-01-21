@@ -12,6 +12,9 @@ MOVEMENT_SPEED = 5
 
 COIN_SCALING = 0.5
 
+PLAYER_SCALING = 0.3
+
+WORKER_SCALING = 0.5
 #BRUH
 
 class Player(arcade.Sprite):
@@ -76,7 +79,7 @@ class MyGame(arcade.Window):
 
 
         # Set up the player
-        self.player_sprite = Player(":resources:images/alien/alienBlue_front.png", SPRITE_SCALING)
+        self.player_sprite = Player(":resources:images/alien/alienBlue_front.png", PLAYER_SCALING)
         self.player_sprite.center_x = 30
         self.player_sprite.center_y = 30
         self.player_list.append(self.player_sprite)
@@ -93,7 +96,7 @@ class MyGame(arcade.Window):
 
            # Use a loop to place a worker
         for x in range(128, 1250, 256):
-            worker = arcade.Sprite(":resources:images/animated_characters/female_person/femalePerson_jump.png")
+            worker = arcade.Sprite(":resources:images/animated_characters/female_person/femalePerson_jump.png", WORKER_SCALING)
             worker.center_x = 70
             worker.center_y = 400
             self.worker_list.append(worker)
@@ -137,6 +140,15 @@ class MyGame(arcade.Window):
         for coin in coin_hit_list:
             # Remove the coin
             coin.remove_from_sprite_lists()
+
+        # See if we hit worker
+        worker_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
+                                                             self.worker_list)
+
+        # Loop through each worker we hit (if any) and talk to them
+        for worker in worker_hit_list:
+            # Remove the coin
+            pass
 
     def on_key_press(self, key, modifiers):
         """ Called whenever a key is pressed """
