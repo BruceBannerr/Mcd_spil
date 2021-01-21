@@ -116,6 +116,15 @@ class MyGame(arcade.Window):
         # Call update to move the sprite
         self.player_list.update()
 
+        # See if we hit any coins
+        coin_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
+                                                             self.coin_list)
+
+        # Loop through each coin we hit (if any) and remove it
+        for coin in coin_hit_list:
+            # Remove the coin
+            coin.remove_from_sprite_lists()
+
     def on_key_press(self, key, modifiers):
         """ Called whenever a key is pressed """
 
