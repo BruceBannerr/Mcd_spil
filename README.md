@@ -1,7 +1,7 @@
 # McDonald_spil
-Det her er et spil
+This is a game
 
-# Før du spiller
+# Before you start
 pip install random
 
 pip install arcade
