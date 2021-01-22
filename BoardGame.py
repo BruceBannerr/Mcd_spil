@@ -138,10 +138,10 @@ class MyGame(arcade.Window):
         arcade.start_render()
 
         # Draw all the sprites.
+        self.board_list.draw()
         self.coin_list.draw()
         self.player_list.draw()
         self.worker_list.draw()
-        self.board_list.draw()
 
         # Draw our score on the screen
         score_text = f"Monetos: {self.score}"
