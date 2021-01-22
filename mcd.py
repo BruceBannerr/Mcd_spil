@@ -1,13 +1,13 @@
 #Moneycounter
-money_count = 0
+moneycount = 0
 
 #Gamestart
 def start():
-    print(" You have", money_count,"DKK")
+    print(" You have", moneycount,"DKK")
     user_input = input(":")
     #Go to exit
     if user_input == "e" or user_input == "E":
-        Exit()
+        money()
     #Go to desk
     elif user_input == "d" or user_input == "D":
         desk()
@@ -29,15 +29,15 @@ def Exit():
 
 #desk
 def desk():
-    print("You are at the desk. You have ", money_count, "DKK.")
-    if money_count >= 65:
+    print("You are at the desk. You have ", moneycount, "DKK.")
+    if moneycount >= 65:
         print("You have enough money for a burger, do you wanna buy? y=yes, n=no.")
         user_input = input(":")
         if user_input == "y" or user_input == "Y":
             print("You have now bought a burger.")
         elif user_input == "n" or user_input == "N":
             print("You have not bought a burger.")
-    elif money_count < 65:
+    elif moneycount < 65:
         print("You cannot afford a burger.")
 
 #Kø
@@ -46,7 +46,6 @@ def queue():
     user_input = input(":")
     if user_input == "b" or user_input == "B":
         print("You beg for money.")
-        money_count=money_count+2
     elif user_input == "s" or user_input == "S":
         print("You steal money.")
 
