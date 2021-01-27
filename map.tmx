@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="1">
- <tileset firstgid="1" name="my_tiles" tilewidth="128" tileheight="128" tilecount="1" columns="0">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="1">
+ <tileset firstgid="1" name="my_tiles" tilewidth="256" tileheight="512" tilecount="3" columns="0">
   <grid orientation="orthogonal" width="1" height="1"/>
   <tile id="3">
    <image width="128" height="128" source="stoneCenter.png"/>
+  </tile>
+  <tile id="4">
+   <image width="256" height="512" source="stoneWallAged_E.png"/>
+  </tile>
+  <tile id="5">
+   <image width="256" height="512" source="tableShortChairs_W.png"/>
   </tile>
  </tileset>
  <layer id="4" name="Platforms" width="50" height="50" offsetx="3.11017" offsety="0.000355951">

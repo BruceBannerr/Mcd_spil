@@ -17,6 +17,8 @@ COIN_SCALING = 0.5
 PLAYER_SCALING = 0.3
 
 WORKER_SCALING = 0.5
+
+TABLE_SCALING = 1
 #BRUH
 
 class Player(arcade.Sprite):
@@ -57,7 +59,10 @@ class MyGame(arcade.Window):
         self.coin_list = None
 
         # Set up worker info
-        self.worker_list= None
+        self.worker_list = None
+
+        # Set up table info
+        self.table_list = None
 
         # Keep track of the score
         self.score = 0
@@ -80,6 +85,7 @@ class MyGame(arcade.Window):
         self.player_list = arcade.SpriteList()
         self.coin_list = arcade.SpriteList()
         self.worker_list = arcade.SpriteList()
+        self.table_list = arcade.SpriteList()
 
         # Score
         self.score = 0
@@ -88,7 +94,7 @@ class MyGame(arcade.Window):
         # Set up the player
         self.player_sprite = Player(":resources:images/alien/alienBlue_front.png", PLAYER_SCALING)
         self.player_sprite.center_x = 30
-        self.player_sprite.center_y = 30
+        self.player_sprite.center_y = 700
         self.player_list.append(self.player_sprite)
 
 
@@ -130,6 +136,20 @@ class MyGame(arcade.Window):
             worker.center_y = 400
             self.worker_list.append(worker)
 
+           # Use a loop to place some tables
+        for x in range(128, 1250, 256):
+            table = arcade.Sprite(":resources:images/isometric_dungeon/tableShortChairs_W.png", TABLE_SCALING)
+            table.center_x = x
+            table.center_y = 200
+            self.table_list.append(table)
+
+           # Use a loop to place some tables
+        for x in range(128, 1250, 256):
+            table = arcade.Sprite(":resources:images/isometric_dungeon/tableShortChairs_W.png", TABLE_SCALING)
+            table.center_x = 700
+            table.center_y = 400
+            self.table_list.append(table)
+
 
     def on_draw(self):
         """ Render the screen """
@@ -142,6 +162,7 @@ class MyGame(arcade.Window):
         self.coin_list.draw()
         self.player_list.draw()
         self.worker_list.draw()
+        self.table_list.draw()
 
         # Draw our score on the screen
         score_text = f"Monetos: {self.score}"
