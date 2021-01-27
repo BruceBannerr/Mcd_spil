@@ -2,6 +2,8 @@
 
 import arcade
 
+import time
+
 SPRITE_SCALING = 0.5
 
 SCREEN_WIDTH = 780
@@ -67,6 +69,9 @@ class MyGame(arcade.Window):
         # Keep track of the score
         self.score = 0
 
+        #Exit text
+        self.exit = ""
+
         # Track the current state of what key is pressed
         self.left_pressed = False
         self.right_pressed = False
@@ -89,6 +94,9 @@ class MyGame(arcade.Window):
 
         # Score
         self.score = 0
+
+        #exit text
+        self.exit = ""
 
 
         # Set up the player
@@ -168,6 +176,20 @@ class MyGame(arcade.Window):
         score_text = f"Monetos: {self.score}"
         arcade.draw_text(score_text, 10, 10, arcade.csscolor.WHITE, 18)
 
+        #See if we hit the Exit
+        exit_hit_list = arcade.check_for_collision_with_list(self.player_sprite, 
+                                                            self.table_list)
+
+        #Draw the Exit text
+        exit_text = f"""Do you wish to give up? if so, press Y. 
+                        If your wish is to continue the game, press N {self.exit}"""
+
+        #draw exit text
+        for exit in exit_hit_list:
+            arcade.draw_text(exit_text, 100, 100, arcade.csscolor.DARK_RED, 18)
+            #time.sleep(2)
+        
+
     def on_update(self, delta_time):
         """ Movement and game logic """
 
@@ -190,6 +212,7 @@ class MyGame(arcade.Window):
         # See if we hit any coins
         coin_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
                                                              self.coin_list)
+
 
         # Loop through each coin we hit (if any) and remove it
         for coin in coin_hit_list:
