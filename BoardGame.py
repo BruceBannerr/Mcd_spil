@@ -143,6 +143,13 @@ class MyGame(arcade.Window):
             table.center_y = 200
             self.table_list.append(table)
 
+           # Use a loop to place some tables
+        for x in range(128, 1250, 256):
+            table = arcade.Sprite(":resources:images/isometric_dungeon/tableShortChairs_W.png", TABLE_SCALING)
+            table.center_x = 700
+            table.center_y = 400
+            self.table_list.append(table)
+
 
     def on_draw(self):
         """ Render the screen """
