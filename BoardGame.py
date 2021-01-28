@@ -21,6 +21,8 @@ PLAYER_SCALING = 0.3
 WORKER_SCALING = 0.5
 
 TABLE_SCALING = 1
+
+EXIT_SCALING = 0.4
 #BRUH
 
 class Player(arcade.Sprite):
@@ -66,6 +68,9 @@ class MyGame(arcade.Window):
         # Set up table info
         self.table_list = None
 
+        # Set up exit info
+        self.exit_list = None
+
         # Keep track of the score
         self.score = 0
 
@@ -91,6 +96,7 @@ class MyGame(arcade.Window):
         self.coin_list = arcade.SpriteList()
         self.worker_list = arcade.SpriteList()
         self.table_list = arcade.SpriteList()
+        self.exit_list = arcade.SpriteList()
 
         # Score
         self.score = 0
@@ -101,8 +107,8 @@ class MyGame(arcade.Window):
 
         # Set up the player
         self.player_sprite = Player(":resources:images/alien/alienBlue_front.png", PLAYER_SCALING)
-        self.player_sprite.center_x = 30
-        self.player_sprite.center_y = 700
+        self.player_sprite.center_x = 390
+        self.player_sprite.center_y = 500
         self.player_list.append(self.player_sprite)
 
 
@@ -158,6 +164,13 @@ class MyGame(arcade.Window):
             table.center_y = 400
             self.table_list.append(table)
 
+            # Use a loop to place an exit
+        for x in range(128, 1250, 256):
+            exit = arcade.Sprite(":resources:images/tiles/signExit.png", EXIT_SCALING)
+            exit.center_x = 30
+            exit.center_y = 700
+            self.exit_list.append(exit)
+
 
     def on_draw(self):
         """ Render the screen """
@@ -171,6 +184,7 @@ class MyGame(arcade.Window):
         self.player_list.draw()
         self.worker_list.draw()
         self.table_list.draw()
+        self.exit_list.draw()
 
         # Draw our score on the screen
         score_text = f"Monetos: {self.score}"
@@ -178,15 +192,15 @@ class MyGame(arcade.Window):
 
         #See if we hit the Exit
         exit_hit_list = arcade.check_for_collision_with_list(self.player_sprite, 
-                                                            self.table_list)
+                                                            self.exit_list)
 
         #Draw the Exit text
         exit_text = f"""Do you wish to give up? if so, press Y. 
-                        If your wish is to continue the game, press N {self.exit}"""
+                    If your wish is to continue the game, press N {self.exit}"""
 
         #draw exit text
         for exit in exit_hit_list:
-            arcade.draw_text(exit_text, 100, 100, arcade.csscolor.DARK_RED, 18)
+            arcade.draw_text(exit_text, 100, 400, arcade.csscolor.DARK_RED, 18)
             #time.sleep(2)
         
 
