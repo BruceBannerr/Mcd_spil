@@ -148,8 +148,10 @@ def family():
         print("You take the children and blackmail the family.")
         print("How much do you want for the children?")
         user_input = input(":")
-        if user_input < str(50):
+        if user_input <= str(50):
             print("The family gives yo the money!")
+        elif user_input > str(50):
+            print("Lol")
     elif user_input == "c" or user_input == "C":
         print("You offer to take care of the children.")
 
