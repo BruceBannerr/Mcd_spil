@@ -113,7 +113,7 @@ def old_man():
     print("You are at the old man. Du you want to offer him a good time in your bedroom (b). Du you want to listen to him talking about the good old days (l)")
     user_input = input(":")
     if user_input == "b" or user_input == "B":
-        print("You offers him a good time in your bedroom, he refuses ...")
+        print("You offer him a good time in your bedroom, he refuses ...")
     elif user_input == "l" or user_input == "L":
         print("You listen to him talking about the good old days, while you are hoping that he offers you a burger.")
         print("But he doesn't.")
