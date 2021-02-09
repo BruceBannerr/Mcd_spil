@@ -267,7 +267,8 @@ class MyGame(arcade.Window):
             self.right_pressed = True
 
         if key == arcade.key.Y:
-            sys.exit()
+            if len(arcade.check_for_collision_with_list(self.player_sprite, self.exit_list)) > 0:
+                sys.exit()
             
 
 
