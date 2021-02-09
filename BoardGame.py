@@ -3,6 +3,7 @@
 import arcade
 import sys
 import time
+import random
 
 SPRITE_SCALING = 0.5
 
