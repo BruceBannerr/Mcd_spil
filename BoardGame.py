@@ -77,6 +77,9 @@ class MyGame(arcade.Window):
         #Exit text
         self.exit = ""
 
+        #Table 1 text
+        self.table1 = ""
+
         # Track the current state of what key is pressed
         self.left_pressed = False
         self.right_pressed = False
@@ -96,6 +99,10 @@ class MyGame(arcade.Window):
         self.coin_list = arcade.SpriteList()
         self.worker_list = arcade.SpriteList()
         self.table_list = arcade.SpriteList()
+        self.table1_list = arcade.SpriteList()
+        self.table2_list = arcade.SpriteList()
+        self.table3_list = arcade.SpriteList()
+        self.table4_list = arcade.SpriteList()
         self.exit_list = arcade.SpriteList()
 
         # Score
@@ -155,28 +162,28 @@ class MyGame(arcade.Window):
             table = arcade.Sprite("tableShortChairs1.png", TABLE_SCALING)
             table.center_x = 200
             table.center_y = 200
-            self.table_list.append(table)
+            self.table1_list.append(table)
 
            # Use a loop to place some tables
         for x in range(128, 1250, 256):
             table = arcade.Sprite("tableShortChairs2.png", TABLE_SCALING)
             table.center_x = 700
             table.center_y = 400
-            self.table_list.append(table)
+            self.table2_list.append(table)
 
          # Use a loop to place some tables
         for x in range(128, 1250, 256):
             table = arcade.Sprite("tableShortChairs3.png", TABLE_SCALING)
             table.center_x = 700
             table.center_y = 200
-            self.table_list.append(table)
+            self.table3_list.append(table)
 
         # Use a loop to place some tables
         for x in range(128, 1250, 256):
             table = arcade.Sprite("tableShortChairs4.png", TABLE_SCALING)
             table.center_x = 450
             table.center_y = 200
-            self.table_list.append(table)
+            self.table4_list.append(table)
 
             # Use a loop to place an exit
         for x in range(128, 1250, 256):
@@ -197,7 +204,10 @@ class MyGame(arcade.Window):
         self.coin_list.draw()
         self.player_list.draw()
         self.worker_list.draw()
-        self.table_list.draw()
+        self.table1_list.draw()
+        self.table2_list.draw()
+        self.table3_list.draw()
+        self.table4_list.draw()
         self.exit_list.draw()
 
         # Draw our score on the screen
@@ -214,6 +224,16 @@ class MyGame(arcade.Window):
         #draw exit text
         for exit in exit_hit_list:
             arcade.draw_text(exit_text, 100, 400, arcade.csscolor.DARK_RED, 18)
+
+
+        #See if we hit a table
+        table_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.table1_list)
+
+        #Task text
+        table1_text = f"""diller {self.table1}"""
+        #Draw the task
+        for table in table_hit_list:
+            arcade.draw_text(table1_text, 100, 400, arcade.csscolor.DARK_MAGENTA, 18)
 
 
 
@@ -270,6 +290,10 @@ class MyGame(arcade.Window):
             if len(arcade.check_for_collision_with_list(self.player_sprite, self.exit_list)) > 0:
                 sys.exit()
             
+
+        if key == arcade.key.R:
+            if len(arcade.check_for_collision_with_list(self.player_sprite, self.table1_list)) > 0:
+                print("lol")
 
 
     def on_key_release(self, key, modifiers):
