@@ -4,6 +4,7 @@ import arcade
 import sys
 import time
 
+
 SPRITE_SCALING = 0.5
 
 SCREEN_WIDTH = 780
