@@ -5,6 +5,7 @@ import sys
 import time
 import random
 
+
 SPRITE_SCALING = 0.5
 
 SCREEN_WIDTH = 780
@@ -231,10 +232,12 @@ class MyGame(arcade.Window):
         table_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.table1_list)
 
         #Task text
-        table1_text = f"""diller {self.table1}"""
+        table1_text = f"""You are at the empty table. Du you wanna cry(c) or look for money(v)? {self.table1}"""
         #Draw the task
         for table in table_hit_list:
             arcade.draw_text(table1_text, 100, 400, arcade.csscolor.DARK_MAGENTA, 18)
+
+
 
 
 
@@ -291,10 +294,16 @@ class MyGame(arcade.Window):
             if len(arcade.check_for_collision_with_list(self.player_sprite, self.exit_list)) > 0:
                 sys.exit()
             
-
-        if key == arcade.key.R:
+        #table1
+        #cry text
+        cry_text = f"""You cried"""
+        if key == arcade.key.C:
             if len(arcade.check_for_collision_with_list(self.player_sprite, self.table1_list)) > 0:
-                print("lol")
+                arcade.draw_text(cry_text, 100, 400, arcade.csscolor.DARK_RED, 18)
+                time.sleep(1)
+        elif key == arcade.key.V:
+            if len(arcade.check_for_collision_with_list(self.player_sprite, self.table1_list)) > 0:
+                print("jno")
 
 
     def on_key_release(self, key, modifiers):
