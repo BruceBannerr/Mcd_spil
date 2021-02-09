@@ -209,8 +209,7 @@ class MyGame(arcade.Window):
                                                             self.exit_list)
 
         #Draw the Exit text
-        exit_text = f"""Do you wish to give up? if so, press Y. 
-                    If your wish is to continue the game, press N {self.exit}"""
+        exit_text = f"""Do you wish to give up? if so, press Y. {self.exit}"""
 
         #draw exit text
         for exit in exit_hit_list:
