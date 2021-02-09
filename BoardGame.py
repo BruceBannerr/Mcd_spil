@@ -215,8 +215,8 @@ class MyGame(arcade.Window):
         #draw exit text
         for exit in exit_hit_list:
             arcade.draw_text(exit_text, 100, 400, arcade.csscolor.DARK_RED, 18)
-            #time.sleep(2)
-        
+
+
 
     def on_update(self, delta_time):
         """ Movement and game logic """
@@ -258,7 +258,6 @@ class MyGame(arcade.Window):
 
     def on_key_press(self, key, modifiers):
         """ Called whenever a key is pressed """
-
         if key == arcade.key.UP:
             self.up_pressed = True
         elif key == arcade.key.DOWN:
@@ -267,6 +266,11 @@ class MyGame(arcade.Window):
             self.left_pressed = True
         elif key == arcade.key.RIGHT:
             self.right_pressed = True
+
+        if key == arcade.key.Y:
+            pass
+            
+
 
     def on_key_release(self, key, modifiers):
         """ Called when the user releases a key """
