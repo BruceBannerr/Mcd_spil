@@ -1,7 +1,7 @@
 """ McD-Game """
 
 import arcade
-
+import sys
 import time
 
 SPRITE_SCALING = 0.5
@@ -267,7 +267,7 @@ class MyGame(arcade.Window):
             self.right_pressed = True
 
         if key == arcade.key.Y:
-            pass
+            sys.exit()
             
 
 
