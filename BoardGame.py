@@ -214,28 +214,29 @@ class MyGame(arcade.Window):
 
         # Draw our score on the screen
         score_text = f"Monetos: {self.score}"
-        arcade.draw_text(score_text, 10, 10, arcade.csscolor.WHITE, 18)
+        arcade.draw_text(score_text, 10, 10, arcade.csscolor.GREY, 16)
 
         #See if we hit the Exit
         exit_hit_list = arcade.check_for_collision_with_list(self.player_sprite, 
                                                             self.exit_list)
 
         #Draw the Exit text
-        exit_text = f"""Do you wish to give up? if so, press Y. {self.exit}"""
+        exit_text = f"""Do you wish to give up? if so, press esc. {self.exit}"""
 
         #draw exit text
         for exit in exit_hit_list:
-            arcade.draw_text(exit_text, 100, 400, arcade.csscolor.DARK_RED, 18)
+            arcade.draw_text(exit_text, 100, 400, arcade.csscolor.GREY, 16)
 
 
         #See if we hit a table
         table_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.table1_list)
 
         #Task text
-        table1_text = f"""You are at the empty table. Du you wanna cry(c) or look for money(v)? {self.table1}"""
+        table1_text = f"""You are at the empty table. 
+        Du you wanna cry press c or look for money press v? {self.table1}"""
         #Draw the task
         for table in table_hit_list:
-            arcade.draw_text(table1_text, 100, 400, arcade.csscolor.DARK_MAGENTA, 18)
+            arcade.draw_text(table1_text, 100, 400, arcade.csscolor.GREY, 16)
 
 
 
@@ -290,7 +291,7 @@ class MyGame(arcade.Window):
         elif key == arcade.key.RIGHT:
             self.right_pressed = True
 
-        if key == arcade.key.Y:
+        if key == arcade.key.ESCAPE:
             if len(arcade.check_for_collision_with_list(self.player_sprite, self.exit_list)) > 0:
                 sys.exit()
             
@@ -299,7 +300,7 @@ class MyGame(arcade.Window):
         cry_text = f"""You cried"""
         if key == arcade.key.C:
             if len(arcade.check_for_collision_with_list(self.player_sprite, self.table1_list)) > 0:
-                arcade.draw_text(cry_text, 100, 400, arcade.csscolor.DARK_RED, 18)
+                arcade.draw_text(cry_text, 100, 400, arcade.csscolor.BLACK, 18)
                 time.sleep(1)
         elif key == arcade.key.V:
             if len(arcade.check_for_collision_with_list(self.player_sprite, self.table1_list)) > 0:
