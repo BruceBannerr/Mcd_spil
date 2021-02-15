@@ -3,6 +3,19 @@ import random
 import os
 
 SPRITE_SCALING = 0.5
+COIN_SCALING = 0.5
+
+MOVEMENT_SPEED = 5
+
+TILE_SCALING = 0.5
+
+PLAYER_SCALING = 0.3
+
+WORKER_SCALING = 0.5
+
+TABLE_SCALING = 1
+
+EXIT_SCALING = 0.4
 
 SCREEN_WIDTH = 780
 SCREEN_HEIGHT = 780
@@ -66,7 +79,7 @@ class MyGame(arcade.Window):
 
             # Create the coin instance
             # Coin image from kenney.nl
-            coin = arcade.Sprite(":resources:images/items/coinGold.png", SPRITE_SCALING_COIN)
+            coin = arcade.Sprite(":resources:images/items/coinGold.png", COIN_SCALING)
 
             # --- IMPORTANT PART ---
 
