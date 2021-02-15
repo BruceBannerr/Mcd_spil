@@ -5,7 +5,7 @@ moneycount = 0
 
 #Gamestart
 def start():
-    print(" You have", moneycount,"DKK")
+    print(" You have", moneycount,"DKK. Press e for exit, d for desk, q for queue, t for trashcan, m for empty table, o for old man, c for cleaning staff, f for family.")
     user_input = input(":")
 #Go to exit
     if user_input == "e" or user_input == "E":

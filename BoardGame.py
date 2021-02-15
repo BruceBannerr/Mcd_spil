@@ -9,7 +9,7 @@ import random
 SPRITE_SCALING = 0.5
 
 SCREEN_WIDTH = 780
-SCREEN_HEIGHT = 780
+SCREEN_HEIGHT = 700
 SCREEN_TITLE = "McD-Game"
 
 MOVEMENT_SPEED = 5
@@ -216,16 +216,7 @@ class MyGame(arcade.Window):
         score_text = f"Monetos: {self.score}"
         arcade.draw_text(score_text, 10, 10, arcade.csscolor.WHITE, 18)
 
-        #See if we hit the Exit
-        exit_hit_list = arcade.check_for_collision_with_list(self.player_sprite, 
-                                                            self.exit_list)
-
-        #Draw the Exit text
-        exit_text = f"""Do you wish to give up? if so, press Y. {self.exit}"""
-
-        #draw exit text
-        for exit in exit_hit_list:
-            arcade.draw_text(exit_text, 100, 400, arcade.csscolor.DARK_RED, 18)
+       
 
 
         #See if we hit a table
